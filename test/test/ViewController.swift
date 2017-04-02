@@ -38,7 +38,10 @@ class ViewController: UIViewController {
         }
         else if sender.state == .changed
         {
-             let translation = sender .translation(in: sender.view)
+            let translation = sender .translation(in: sender.view)
+            
+            let endPoint:CGPoint = sender.location(in: sender.view)
+            
             switch configG{
             case 1:
                 //for oval
@@ -52,6 +55,12 @@ class ViewController: UIViewController {
                                                           width: translation.x,
                                                           height: translation.y))).cgPath
 
+            case 3: //line
+                
+                var linePath = UIBezierPath()
+                linePath.move(to: startPoint)
+                linePath.addLine(to: endPoint)
+                layer?.path = linePath.cgPath
                 
             default:
                 print("no idea")
@@ -65,7 +74,7 @@ class ViewController: UIViewController {
 
     @IBAction func globalConfig(_ sender: UIButton) {
         
-        configG = 2 //oval
+        configG = 3 //oval
     }
 
 }
