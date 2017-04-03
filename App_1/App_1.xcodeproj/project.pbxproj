@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		227F7BFE1E930A7000FF8594 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 227F7BFD1E930A7000FF8594 /* line.png */; };
+		227F7C001E930B2800FF8594 /* oval.png in Resources */ = {isa = PBXBuildFile; fileRef = 227F7BFF1E930B2800FF8594 /* oval.png */; };
+		227F7C041E930B9700FF8594 /* rect.png in Resources */ = {isa = PBXBuildFile; fileRef = 227F7C031E930B9700FF8594 /* rect.png */; };
+		227F7C081E930E5C00FF8594 /* pencil.png in Resources */ = {isa = PBXBuildFile; fileRef = 227F7C071E930E5C00FF8594 /* pencil.png */; };
+		227F7C0A1E93104000FF8594 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = 227F7C091E93104000FF8594 /* save.png */; };
+		227F7C0E1E9311B700FF8594 /* trashbin.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 227F7C0D1E9311B700FF8594 /* trashbin.jpeg */; };
 		229F27091E92F9720024306B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F27081E92F9720024306B /* AppDelegate.swift */; };
 		229F270B1E92F9720024306B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229F270A1E92F9720024306B /* ViewController.swift */; };
 		229F270E1E92F9720024306B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229F270C1E92F9720024306B /* Main.storyboard */; };
@@ -15,6 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		227F7BFD1E930A7000FF8594 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = line.png; path = Pictures/line.png; sourceTree = "<group>"; };
+		227F7BFF1E930B2800FF8594 /* oval.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = oval.png; path = Pictures/oval.png; sourceTree = "<group>"; };
+		227F7C031E930B9700FF8594 /* rect.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rect.png; path = Pictures/rect.png; sourceTree = "<group>"; };
+		227F7C071E930E5C00FF8594 /* pencil.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pencil.png; path = Pictures/pencil.png; sourceTree = "<group>"; };
+		227F7C091E93104000FF8594 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = save.png; path = Pictures/save.png; sourceTree = "<group>"; };
+		227F7C0D1E9311B700FF8594 /* trashbin.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = trashbin.jpeg; path = Pictures/trashbin.jpeg; sourceTree = "<group>"; };
 		229F27051E92F9720024306B /* App_1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		229F27081E92F9720024306B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		229F270A1E92F9720024306B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +47,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		227F7BFC1E9309A700FF8594 /* pictures */ = {
+			isa = PBXGroup;
+			children = (
+				227F7C0D1E9311B700FF8594 /* trashbin.jpeg */,
+				227F7C091E93104000FF8594 /* save.png */,
+				227F7C071E930E5C00FF8594 /* pencil.png */,
+				227F7C031E930B9700FF8594 /* rect.png */,
+				227F7BFF1E930B2800FF8594 /* oval.png */,
+				227F7BFD1E930A7000FF8594 /* line.png */,
+			);
+			name = pictures;
+			sourceTree = "<group>";
+		};
 		229F26FC1E92F9710024306B = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +79,7 @@
 		229F27071E92F9720024306B /* App_1 */ = {
 			isa = PBXGroup;
 			children = (
+				227F7BFC1E9309A700FF8594 /* pictures */,
 				229F27081E92F9720024306B /* AppDelegate.swift */,
 				229F270A1E92F9720024306B /* ViewController.swift */,
 				229F270C1E92F9720024306B /* Main.storyboard */,
@@ -123,9 +149,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227F7C0E1E9311B700FF8594 /* trashbin.jpeg in Resources */,
 				229F27131E92F9720024306B /* LaunchScreen.storyboard in Resources */,
+				227F7C081E930E5C00FF8594 /* pencil.png in Resources */,
+				227F7C0A1E93104000FF8594 /* save.png in Resources */,
+				227F7C001E930B2800FF8594 /* oval.png in Resources */,
 				229F27101E92F9720024306B /* Assets.xcassets in Resources */,
 				229F270E1E92F9720024306B /* Main.storyboard in Resources */,
+				227F7BFE1E930A7000FF8594 /* line.png in Resources */,
+				227F7C041E930B9700FF8594 /* rect.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +331,7 @@
 				229F27191E92F9720024306B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
