@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var layer:CAShapeLayer?
     
     var configG:Int = 0
+    var layerArray = [CAShapeLayer]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,9 @@ class ViewController: UIViewController {
             layer?.opacity = 0.2
             layer?.strokeColor = UIColor.blue.cgColor
             self.view.layer.addSublayer(layer!)
+            print ("add layer")
+            layerArray.append(layer!)
+            
         }
         else if sender.state == .changed
         {
@@ -110,13 +114,13 @@ class ViewController: UIViewController {
                 layer?.path = linePath.cgPath
             
             case 4: //triangle
-                let trianglepath = polygonPath(x: startPoint.x, y:startPoint.y, radius: translation.x/3, sides: 3, offset: 0)
+                let trianglepath = polygonPath(x: startPoint.x, y:startPoint.y, radius: endPoint.x/3, sides: 3, offset: -10)
                 let tPath = UIBezierPath(cgPath:trianglepath)
                 
                layer?.path = tPath.cgPath
             
             case 5: //diamond
-                let diamondPath = polygonPath(x: startPoint.x, y:startPoint.y, radius: translation.x/4, sides: 4, offset: 0)
+                let diamondPath = polygonPath(x: startPoint.x, y:startPoint.y, radius: endPoint.x/4, sides: 4, offset: 0)
                 let diamondBezierpath = UIBezierPath(cgPath:diamondPath)
                 
                 layer?.path = diamondBezierpath.cgPath
@@ -126,12 +130,22 @@ class ViewController: UIViewController {
                 let starBezierPath = UIBezierPath(cgPath:starPath)
                 
                 layer?.path = starBezierPath.cgPath
+            
+            case 7: //another triangle
                 
-            default:
+                let linePath = UIBezierPath()
+                linePath.move(to: CGPoint(x:startPoint.x, y:startPoint.y))                
+                linePath.addLine(to: CGPoint(x:endPoint.x, y:startPoint.y))
+                linePath.addLine(to: CGPoint(x:endPoint.x, y:endPoint.y))
+                linePath.addLine(to: CGPoint(x:startPoint.x, y:startPoint.y))
+                layer?.path = linePath.cgPath
+           
+                               
+                 default:
                 print("no idea")
                 
             }
-           
+            
         }
     }
     
@@ -139,8 +153,53 @@ class ViewController: UIViewController {
 
     @IBAction func globalConfig(_ sender: UIButton) {
         
-        configG = 6
+        configG = 7
     }
+
+    @IBAction func popMsg(_ sender: UIButton) {
+        
+        //Create the AlertController and add Its action like button in Actionsheet
+        /*
+        let actionSheetControllerIOS8: UIAlertController = UIAlertController(title: "Please select", message: "Option to select", preferredStyle: .actionSheet)
+        
+        let cancelActionButton: UIAlertAction = UIAlertAction(title: "Cancel", style: .cancel) { void in
+            print("Cancel")
+        }
+        actionSheetControllerIOS8.addAction(cancelActionButton)
+        
+        
+        let saveActionButton: UIAlertAction = UIAlertAction(title: "Save", style: .default)
+        { void in
+            print("Save")
+        }
+        actionSheetControllerIOS8.addAction(saveActionButton)
+        
+        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Delete", style: .default)
+        { void in
+            print("Delete")
+        }
+        actionSheetControllerIOS8.addAction(deleteActionButton)
+        self.present(actionSheetControllerIOS8, animated: true, completion: nil)
+        */
+        
+        
+        
+        let actionSheetDeleteController:UIAlertController = UIAlertController(title: "Notice!", message: "Do you want to delete all", preferredStyle: .actionSheet)
+        let deleteActionButton: UIAlertAction = UIAlertAction(title: "Delete All", style: .default) { void in
+            print("delete all")
+            
+            for mylayer in self.layerArray{
+                mylayer.removeFromSuperlayer()
+            }
+            
+        }
+        
+        actionSheetDeleteController.addAction(deleteActionButton)
+        self.present(actionSheetDeleteController, animated: true, completion: nil)
+
+    }
+    
+    
 
 }
 
