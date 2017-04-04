@@ -140,9 +140,16 @@ class ViewController: UIViewController {
                 linePath.addLine(to: CGPoint(x:startPoint.x, y:startPoint.y))
                 layer?.path = linePath.cgPath
            
-                               
+            case 8: //free draw
+                 let linePath = UIBezierPath()
+                
+                linePath.move(to: CGPoint(x:translation.x, y:translation.y))
+                linePath.addLine(to: endPoint)
+                layer?.path = linePath.cgPath
+                
                  default:
                 print("no idea")
+                
                 
             }
             
@@ -153,7 +160,7 @@ class ViewController: UIViewController {
 
     @IBAction func globalConfig(_ sender: UIButton) {
         
-        configG = 7
+        configG = 8
     }
 
     @IBAction func popMsg(_ sender: UIButton) {
