@@ -5,6 +5,10 @@
 //  Created by Xinyu Qu on 4/4/17.
 //  Copyright © 2017 Xinyu Qu. All rights reserved.
 //
+/*TO Do
+ * 1. organizing the code
+ * 2. delete the eraser view 
+ */
 
 import UIKit
 
@@ -19,8 +23,12 @@ class ViewController: UIViewController {
     var endPoint:CGPoint = CGPointFromString("0")
     var layerArray = [CAShapeLayer]()
     var currentPointArray = [CGPoint]()
+    
+    var inErasingState:Bool = false
+
    
     @IBOutlet weak var savePicButton: UIButton!
+    @IBOutlet weak var EraserButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +72,9 @@ class ViewController: UIViewController {
             return
             
        }
+        //for eraser
+        EraserButton.isSelected = false
+        inErasingState = false
     }
     
     
@@ -75,6 +86,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func drawingPictures(_ sender: UIPanGestureRecognizer) {
+        //************ eraser
+        let eraserview:UIView = UIView()
+        eraserview.frame = CGRect(x:0, y:0, width:15, height:15)
+        eraserview.backgroundColor = UIColor.white
+        eraserview.alpha = 0
+        sender.view?.addSubview(eraserview)
+        //************
+        
         
         if sender.state == .began
         {
@@ -89,10 +108,20 @@ class ViewController: UIViewController {
             layer?.strokeColor = myShapeColor.colorSelector.cgColor
             self.view.layer.addSublayer(layer!)
             layerArray.append(layer!)
+            
+            //////*****for eraser
+            if inErasingState{
+                eraserview.alpha = 1
+                eraserview.center = sender.location(in: sender.view)
+                sender.view?.setNeedsDisplay()
+            }
+            //////*****for eraser
         }
         else if sender.state == .changed
         {
             print("changede\n")
+        if inErasingState == false
+        {
             let linePath = UIBezierPath()
             let translation = sender .translation(in: sender.view)
             endPoint = sender.location(in: sender.view)
@@ -126,15 +155,27 @@ class ViewController: UIViewController {
             default:
                 return
             }
+        }else{
+            print("changed easer")
+            eraserview.center = sender.location(in: sender.view)
+            }
         }
         else if sender.state == .ended{
             print("ended\n")
             currentPointArray.removeAll()
+            if inErasingState{
+                eraserview.alpha = 0
+                eraserview.center = sender.location(in: sender.view)
+                sender.view?.setNeedsDisplay()
+                
+            }
+
         }
 
 
     }
     
+    //for save picture to photo album
     @IBAction func SavePic(_ sender: UIButton) {
         let height:CGFloat = self.view.bounds.size.height - self.savePicButton.frame.height - 10
         let imageSize :CGSize = CGSize(width: self.view.bounds.size.width, height: height)
@@ -143,6 +184,10 @@ class ViewController: UIViewController {
         let img:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         UIImageWriteToSavedPhotosAlbum(img, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        //fore eraser
+        EraserButton.isSelected = false
+        inErasingState = false
     }
     
     func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafeRawPointer) {
@@ -160,6 +205,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    //for trash bin
     @IBAction func TrashBin(_ sender: UIButton) {
         
         let actionSheetDeleteController:UIAlertController = UIAlertController(title: "Notice!", message: "Do you want to delete all", preferredStyle: .actionSheet)
@@ -180,9 +226,27 @@ class ViewController: UIViewController {
         actionSheetDeleteController.addAction(cancelActionButton)
         
         self.present(actionSheetDeleteController, animated: true, completion: nil)
+        
+        //for eraser
+        EraserButton.isSelected = false
+        inErasingState = false
+    }
+    
+    @IBAction func EraserPressed(_ sender: UIButton) {
+        if EraserButton.isSelected{
+            //print("isselected")
+            EraserButton.isSelected = false
+            inErasingState = false
+        }
+        else{
+            //print("oppsite of isselected")
+            EraserButton.isSelected = true
+            inErasingState = true
+        }
 
         
     }
+    
     
 }
 

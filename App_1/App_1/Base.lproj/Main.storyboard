@@ -21,36 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1k-4E-j3L" userLabel="yellow">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1k-4E-j3L" userLabel="yellow">
                                 <rect key="frame" x="280" y="337" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="yellow.png"/>
                                 <connections>
                                     <action selector="ColorSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nGb-GM-DxC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1f-rq-Gba" userLabel="red">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1f-rq-Gba" userLabel="red">
                                 <rect key="frame" x="323" y="337" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="red.png"/>
                                 <connections>
                                     <action selector="ColorSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XRI-qg-Mao"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX7-f7-gIc" userLabel="green">
-                                <rect key="frame" x="367" y="337" width="35" height="30"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX7-f7-gIc" userLabel="green">
+                                <rect key="frame" x="366" y="337" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="green.png"/>
                                 <connections>
                                     <action selector="ColorSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zWj-zI-0sr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-tY-f3d" userLabel="blue">
-                                <rect key="frame" x="410" y="337" width="35" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="ColorSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="br8-Ip-Zh1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7B-Oq-vdL" userLabel="line">
@@ -106,12 +101,22 @@
                                     <action selector="UtilitySelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QE2-vm-iDp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZa-Yi-rYD" userLabel="save">
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZa-Yi-rYD" userLabel="erase">
                                 <rect key="frame" x="601" y="337" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="eraser.png"/>
                                 <connections>
+                                    <action selector="EraserPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RTq-Ua-UOB"/>
                                     <action selector="UtilitySelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YVP-dJ-tCz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0r-tY-f3d" userLabel="blue">
+                                <rect key="frame" x="409" y="337" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="blue.png"/>
+                                <connections>
+                                    <action selector="ColorSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="br8-Ip-Zh1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -122,6 +127,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="EraserButton" destination="jZa-Yi-rYD" id="1pA-QR-YBo"/>
                         <outlet property="savePicButton" destination="wlT-sO-8xk" id="Rbz-l6-rcq"/>
                     </connections>
                 </viewController>
@@ -136,12 +142,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blue.png" width="225" height="225"/>
         <image name="eraser.png" width="512" height="512"/>
+        <image name="green.png" width="215" height="121"/>
         <image name="line.png" width="640" height="400"/>
         <image name="oval.png" width="226" height="223"/>
         <image name="pencil.png" width="266" height="190"/>
         <image name="rect.png" width="289" height="174"/>
+        <image name="red.png" width="480" height="480"/>
         <image name="save.png" width="256" height="256"/>
         <image name="trashbin.jpeg" width="204" height="204"/>
+        <image name="yellow.png" width="300" height="300"/>
     </resources>
 </document>
