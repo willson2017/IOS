@@ -44,12 +44,37 @@ class Shapes{
     
         Layer.path = UIBezierPath(rect:rectShape).cgPath
     }
+    
     //draw oval
     func drawOval(ovalShape:CGRect, Layer:CAShapeLayer){
       Layer.path = UIBezierPath(ovalIn:ovalShape).cgPath
     }
+    
     //Free draw
-    func drawPencil(){
+    func drawPencil(PencilPath:UIBezierPath, points:[CGPoint], Layer:CAShapeLayer){
+        
+        var continuePoints:CGPoint?
+        PencilPath.lineCapStyle = .round
+        PencilPath.lineJoinStyle = .round
+        
+        //mypath.move(to: startPoint)
+
+        
+        if points.count > 0 {
+            //move to the startpoint
+            PencilPath.move(to: points[0])
+            print("currentPoint start points: \(points[0])")
+            
+            //draw line from the collection
+            for i in 0..<points.count {
+                PencilPath.addLine(to: points[i])
+                continuePoints = points[i]
+                PencilPath.move(to: continuePoints!)
+                print("print current points \(points[i])")
+            }
+        }
+        //print on the layer
+        Layer.path = PencilPath.cgPath
         
     }
     
